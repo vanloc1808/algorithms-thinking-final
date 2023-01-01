@@ -11,6 +11,22 @@ using namespace std;
 int main()
 {
     fastio;
-    
+    int n; cin >> n;
+    for (int mask = 1; mask < (1 << 9); mask++){
+        vector<int> a;
+        for (int i = 0; i < 9; i++){
+            a.push_back((mask >> i) & 1);
+        }
+        reverse(a.begin(), a.end());
+        int cur = 0;
+        for (int x : a){
+            cur = cur * 10 + x;
+        }
+        if (cur % n == 0){
+            cout << cur << '\n';
+            return 0;
+        }
+    }
+    cout << -1 << '\n';
     return 0;
 }
