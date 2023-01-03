@@ -24,14 +24,18 @@ int main()
 
     long long low = -INF / n, high = *min_element(a + 1, a + n + 1);
     
+    auto calc = [&](long long n) -> long long {
+        return n * (n + 1) / 2;
+    };
+
     auto check = [&](long long x) -> bool {
         long long minCost = INF;
-        int l = 0, r = 0;
+        int l = 1, r = 1;
         for (int i = 1; i <= n; i++){
             r = max(r, i);
             while (l < i && a[l + 1] <= (x + (i - l))) l++;
             while (r < n && a[r + 1] > (x + (r - i + 1))) r++;
-            long long curCost = -x * (r - l + 1) + sum[r] - sum[l];
+            long long curCost = -x * (r - l + 1) + sum[r] - sum[l - 1] - calc(i - l) - calc(r - i);
             minCost = min(minCost, curCost);
         }
         return minCost <= T;
