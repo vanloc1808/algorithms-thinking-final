@@ -7,7 +7,7 @@ void solve(int n) {
     set<int> s;
 
     // check if n is a sum of two squares
-    for (int i = 0; i <= n; i++) {
+    for (int i = 0; i * i <= n; i++) {
         s.insert(i * i);
 
         if (s.count(n - i * i)) {
