@@ -31,7 +31,7 @@ int main()
     p[0] = 1;
     for (int i = 0; i < n; i++){
         _hash[i + 1] = (1ll * _hash[i] * BASE + s[i]) % MOD;
-        p[i + 1] = (p[i] * BASE) % MOD;
+        p[i + 1] = (1ll * p[i] * BASE) % MOD;
     }
 
     int tHash = 0;
